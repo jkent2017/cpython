@@ -1676,8 +1676,15 @@ This configure script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it.
 
 Modified by team name:
-Nathan Pichette
+<<<<<<< HEAD
+
 Member names...
+=======
+Member names:
+Carlo Campanini
+Nathan Pichette
+Jordan Kent
+>>>>>>> 65c3450f5e80179ec1e19ea58cdb6fad1ff6a2a9
 
 _ACEOF
   exit
