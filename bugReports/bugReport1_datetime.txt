@@ -1,0 +1,30 @@
+In Python 3.9.0a3+, the datetime module has a feature that allows you to input a date in Gergorian and it will give you the day of the week that the date falls on.
+
+Currently, this feature will terminate a program if the date is lower than 1 year (BCE dates) with this error output when using the year -380 (380 BCE):
+
+Traceback (most recent call last):
+  File "/root/Desktop/datetimeExample.py", line 9, in <module>
+    day = datetime.date(-380,3,2)
+ValueError: year -380 is out of range
+
+
+The program used to create this error contains this code:
+
+import datetime
+day = datetime.date(2020,3,2)
+dayNum = day.weekday()
+weekDays = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+
+dayString = weekDays[dayNum]
+print(f'\nDate with an C.E. year: {dayString}\n')
+
+day = datetime.date(-380,3,2)
+dayNum = day.weekday()
+
+dayString = weekdays[dayNum]
+print(f'Date with an B.C.E. year: {dayString}')
+
+
+The section of python that contains this feature is cpython/Lib/datetime.py, where 'cpython' is the python install location in a user's computer. The install location may vary for each user depending on installation preferances.
+
+Inside datetime.py, the variable MINYEAR is set to 1 on line 18. This is the limiting factor for datetime to use BCE years. The issue lies in whether or not there is a '0 year'. Does 1 BCE go to 1 CE, or to 0 for another 365 days before reaching day on of CE. Alongside that, manipulating the year value in the _check_date_fields function could lead to issues elsewhere within the datetime module.
