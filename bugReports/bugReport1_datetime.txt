@@ -1,6 +1,8 @@
-In Python 3.9.0a3+, the datetime module has a feature that allows you to input a date in Gergorian and it will give you the day of the week that the date falls on.
+In Python 3.9.0a3+, the datetime module has a feature that allows you to input a date in Gergorian and it will give you the day of the
+week that the date falls on.
 
-Currently, this feature will terminate a program if the date is lower than 1 year (BCE dates) with this error output when using the year -380 (380 BCE):
+Currently, this feature will terminate a program if the date is lower than 1 year (BCE dates) with this error output when using the year
+-380 (380 BCE):
 
 Traceback (most recent call last):
   File "/root/Desktop/datetimeExample.py", line 9, in <module>
@@ -25,6 +27,9 @@ dayString = weekdays[dayNum]
 print(f'Date with an B.C.E. year: {dayString}')
 
 
-The section of python that contains this feature is cpython/Lib/datetime.py, where 'cpython' is the python install location in a user's computer. The install location may vary for each user depending on installation preferances.
+The section of python that contains this feature is cpython/Lib/datetime.py, where 'cpython' is the python install location in a user's
+computer. The install location may vary for each user depending on installation preferances.
 
-Inside datetime.py, the variable MINYEAR is set to 1 on line 18. This is the limiting factor for datetime to use BCE years. The issue lies in whether or not there is a '0 year'. Does 1 BCE go to 1 CE, or to 0 for another 365 days before reaching day on of CE. Alongside that, manipulating the year value in the _check_date_fields function could lead to issues elsewhere within the datetime module.
+Inside datetime.py, the variable MINYEAR is set to 1 on line 18. This is the limiting factor for datetime to use BCE years. The issue
+lies in whether or not there is a '0 year'. Does 1 BCE go to 1 CE, or to 0 for another 365 days before reaching day on of CE. Alongside
+that, manipulating the year value in the _check_date_fields function could lead to issues elsewhere within the datetime module.
