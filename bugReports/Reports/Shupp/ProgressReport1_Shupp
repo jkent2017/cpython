@@ -1,0 +1,15 @@
+Up until 20 March 2020, Brendan focused on modifying the datetime library of Python. Due to how ingrained the aspect he wanted to change was,
+and not desiring to rewrite most of the library to incorporate this one feature, he shifted forcuse to the calendar library.
+
+The calendar library does allow for the feature he wanted to add to the datetime library, but the method in which BCE dates are handled
+is odd. 1 BCE is treated as year 0 in calendar, with all subsequent BCE dates being +1 the negative number. 10 BCE is -9, for example.
+
+The calendar library also does not have much support for multiple types of calendars, instead opting to have features relating to
+gregorian, and it would also take rewritting most of the library to have BCE dates line up with their respective negaitve number,
+such as -10 being 10 BCE.
+
+As of 25 March 2020, Brendan has opted to create a new library to have the features he desires, without the need to rewrite
+entire libraries, as well as adding functionality to Python that allows for conversions between multiple types of libraries
+and features specific to each library.
+
+As of right now, he only has the main feature he wanted to add to datetime in caltype, his custom library.
