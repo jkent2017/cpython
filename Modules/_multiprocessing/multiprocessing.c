@@ -87,8 +87,10 @@ multiprocessing_recv(PyObject *self, PyObject *args)
     Py_END_ALLOW_THREADS
 
     if (nread < 0) {
+        Py_DECREF(buf);
         return PyErr_SetExcFromWindowsErr(PyExc_OSError, WSAGetLastError());
     }
+    _PyBytes_Resize(&buf, nread);
     return buf;
 }
 
