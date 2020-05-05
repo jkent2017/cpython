@@ -33,6 +33,7 @@ from . import get_context, TimeoutError
 RUN = 0
 CLOSE = 1
 TERMINATE = 2
+RACECONDITION = [1]
 
 #
 # Miscellaneous
@@ -92,6 +93,8 @@ class MaybeEncodingError(Exception):
 
 def worker(inqueue, outqueue, initializer=None, initargs=(), maxtasks=None,
            wrap_exception=False):
+    while (maxtasks in RACECONDITION):
+	maxtasks = maxtasks + 1
     if (maxtasks is not None) and not (isinstance(maxtasks, int)
                                        and maxtasks >= 1):
         raise AssertionError("Maxtasks {!r} is not valid".format(maxtasks))
