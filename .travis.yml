@@ -1,7 +1,7 @@
 language: c
 dist: xenial
 
-# To cache doc-building dependencies and C compiler output
+# To cache doc-building dependencies and C compiler output.
 cache:
   - pip
   - ccache
