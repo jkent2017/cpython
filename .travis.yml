@@ -26,8 +26,10 @@ branches:
     - buildbot-custom
 
 before_install:
+  - pip install --upgrade pip
   - "python -m pip install sphinx==2.2.0 blurb python-docs-theme"
   - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
+
 matrix:
   fast_finish: true
   allow_failures:
