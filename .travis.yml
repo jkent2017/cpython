@@ -116,7 +116,7 @@ matrix:
 
 before_install:
   # - pip install --upgrade pip
-  - pip install --user pip
+  - pip install -U pip
   - export PYTHONPATH=$PYTHONPATH:$(pwd)
   - set -e
   - |
