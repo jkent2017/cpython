@@ -115,8 +115,8 @@ matrix:
 
 
 before_install:
-  - "pip install -U pip"
-  - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
+  - pip install -U pip
+  - export PYTHONPATH=$PYTHONPATH:$(pwd)
   - set -e
   - |
       # Check short-circuit conditions
